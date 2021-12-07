@@ -9,22 +9,28 @@ class Lista:
 
     def adicionar(self, valor):
         no = No(valor)
-
         if self.inicio:
             aux = self.inicio
             while( aux.proximo ):
                 aux = aux.proximo
             aux.proximo = no
-            while( aux ):
-                aux.anterior:
-                    pass
-                aux.anterior = self.inicio
-            self.final = aux.proximo
-
+            no.anterior = aux
 
         else:
             self.inicio = no
+        self.final = no
         self.tamanho += 1
+    
+    def adicionar2(self, valor):
+        no = No(valor)
+        if self.final:
+            self.final.proximo = no
+            no.anterior = self.final
+        else:
+            self.inicio = no
+        self.final = no
+        self.tamanho += 1
+
 
         
     
@@ -32,13 +38,47 @@ class Lista:
         if self.inicio == None:
             print("A lista está vazia")
         else:
+            print("Lista crescente: ")
             aux = self.inicio
-
-            while( aux.proximo ):
-                print( aux.anterior, "|", aux.dado, "|", aux.proximo.dado )
+            print(aux.anterior, "|", aux.dado,"|", aux.proximo.dado)
+            while(aux.proximo):
+                if (aux.anterior):
+                    print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo.dado)
                 aux = aux.proximo
-            print(self.final.anterior, "|", self.final.dado, "|", self.final.proximo)
-            
+            aux = self.final
+            print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo)
+            print( "Tamanho da lista: ", self.tamanho )
+            print( "---------" )
+    
+    def imprimir_anterior2(self):
+        if self.final == None:
+            print("A lista está vazia")
+        else:
+            print("Lista decrescente: ")
+            aux = self.final
+            print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo)
+            while(aux.anterior):
+                if (aux.proximo):
+                    print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo.dado)
+                aux = aux.anterior
+            aux = self.final
+            print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo)
+            print( "Tamanho da lista: ", self.tamanho )
+            print( "---------" )
+    
+    def imprimir_anterior3(self):
+        if self.final == None:
+            print("A lista está vazia")
+        else:
+            print("Lista decrescente: ")
+            aux = self.final
+            print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo)
+            while(aux.anterior):
+                if (aux.proximo):
+                    print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo.dado)
+                aux = aux.anterior
+            aux = self.final
+            print(aux.anterior.dado, "|", aux.dado,"|", aux.proximo)
             print( "Tamanho da lista: ", self.tamanho )
             print( "---------" )
     
